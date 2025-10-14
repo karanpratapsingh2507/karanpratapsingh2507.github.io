@@ -1,10 +1,10 @@
-# Prathamesh Bhavsar Portfolio
+# Karan Pratap Singh Portfolio
 
 This is my personal portfolio website showcasing my skills, projects, and achievements. Designed with a sleek black and red theme, it emphasizes clean UI/UX with engaging animations and interactive elements.
 
 ## Features
 - **Responsive Design:** Ensures seamless viewing on desktop, tablet, and mobile devices.
-- **Projects Showcase:** Features highlights of key projects like NeuroScan, Uber Data Analytics, and SmartDictBuilder.
+- **Projects Showcase:** Features highlights of key projects 
 - **Animated Elements:** Includes dynamic text animations, zoom effects, and stylish hover interactions.
 - **Achievements Counter:** Displays milestones in an animated format.
 - **GitHub Integration:** Provides a direct link to my GitHub profile.
@@ -36,7 +36,7 @@ If you have suggestions or improvements, feel free to:
 
 ## Contact
 Feel free to connect with me on:
-- **[GitHub](https://github.com/prathameshbhavsar19)**
+- **[GitHub](https://github.com/karanpratapsingh2507)**
 - **[LinkedIn](https://linkedin.com/in/prathameshbhavsar)**
 
 ---
