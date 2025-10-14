@@ -37,7 +37,7 @@ If you have suggestions or improvements, feel free to:
 ## Contact
 Feel free to connect with me on:
 - **[GitHub](https://github.com/karanpratapsingh2507)**
-- **[LinkedIn](https://linkedin.com/in/prathameshbhavsar)**
+- **[LinkedIn](https://www.linkedin.com/in/kps25/)**
 
 ---
 ### License
