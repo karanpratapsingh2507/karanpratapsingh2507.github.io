@@ -24,10 +24,31 @@
       /*======================================
       //--//-->   BASE TWEAKS
       ======================================*/
-      body { background: #0f131a; }
+      body { background: #0f131a; color: #e7e9ee; }
       .navbar.ftco_navbar { background: #0f131a !important; }
       .underline { width: 80px; height: 3px; background: #ffbd39; border-radius: 999px; margin-left: 15px;}
       .big-4 { color: #fff; }
+
+      /*======================================
+      //--//-->   THEME TOGGLE (top-right)
+      ======================================*/
+      .theme-toggle{
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        background: #12171f;
+        color: #e7e9ee;
+        border: 1px solid rgba(255,255,255,.35);
+        border-radius: 12px;
+        padding: 8px 12px;
+        font-size: 16px;
+        line-height: 1;
+        z-index: 1000;
+        box-shadow: 0 8px 24px rgba(0,0,0,.25);
+        transition: transform .15s ease, background .2s ease, box-shadow .2s ease;
+      }
+      .theme-toggle:hover{ transform: translateY(-1px); background: #1b2230; }
+      .theme-toggle:focus{ outline: 2px solid #ffbd39; outline-offset: 2px; }
 
       /*======================================
       //--//-->   ABOUT
@@ -77,18 +98,18 @@
       .experience-wrap .owl-nav{
         position: absolute;
         top: 50%;
-        left: -28px;                  /* extend slightly beyond container */
-        width: calc(100% + 56px);     /* so arrows sit just outside */
+        left: -28px;
+        width: calc(100% + 56px);
         transform: translateY(-50%);
         display: flex;
         justify-content: space-between;
         align-items: center;
-        pointer-events: none;         /* container ignores clicks */
+        pointer-events: none;
         z-index: 5;
       }
       .experience-wrap .owl-nav button.owl-prev,
       .experience-wrap .owl-nav button.owl-next{
-        pointer-events: all;          /* buttons are clickable */
+        pointer-events: all;
         background: rgba(255,255,255,0.1) !important;
         border: 1px solid rgba(255,255,255,0.15);
         border-radius: 50%;
@@ -107,16 +128,9 @@
         box-shadow: 0 8px 22px rgba(255,189,57,.35);
         transform: scale(1.08);
       }
-      .experience-wrap .owl-nav .oi{
-        color:#0f131a;               /* dark icon over amber hover */
-        line-height: 1;
-        font-size: 20px;
-      }
-      /* show white icon when not hovered (dark bg) */
+      .experience-wrap .owl-nav .oi{ color:#0f131a; line-height: 1; font-size: 20px; }
       .experience-wrap .owl-nav button.owl-prev:not(:hover) .oi,
-      .experience-wrap .owl-nav button.owl-next:not(:hover) .oi{
-        color:#ffffff;
-      }
+      .experience-wrap .owl-nav button.owl-next:not(:hover) .oi{ color:#ffffff; }
 
       /* Dots */
       .experience-wrap .owl-dots { margin-top: 10px; text-align: center; }
@@ -133,6 +147,28 @@
       .heading-section h2 { color: #fff; }
       .heading-section p { color: #cfd3db; }
 
+      /*======================================
+      //--//-->   LIGHT MODE OVERRIDES
+      ======================================*/
+      body.light { background: #f7f8fb; color: #111; }
+      body.light .navbar.ftco_navbar{ background: #ffffff !important; }
+      body.light .navbar-dark .navbar-brand,
+      body.light .navbar-dark .nav-link{ color:#111 !important; }
+      body.light .big-4, body.light h1.big, body.light h2 { color:#111; }
+      body.light .xp-card{
+        background: #ffffff;
+        color: #1f2937;
+        border: 1px solid #e5e7eb;
+      }
+      body.light .xp-card .company{ color:#6b7280; }
+      body.light .experience-wrap .owl-nav button.owl-prev,
+      body.light .experience-wrap .owl-nav button.owl-next{
+        background: rgba(0,0,0,.05) !important; border-color: rgba(0,0,0,.12);
+      }
+      body.light .experience-wrap .owl-nav .oi{ color:#111; }
+      body.light .experience-wrap .owl-nav button:hover .oi{ color:#0f131a; }
+      body.light .heading-section p{ color:#3d4451; }
+
       /* On very narrow screens keep arrows inside so they don't clip */
       @media (max-width: 576px){
         .experience-wrap .owl-nav { left: 0; width: 100%; }
@@ -141,6 +177,9 @@
   </head>
 
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+    <!-- THEME TOGGLE BUTTON -->
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">☀︎/☾</button>
 
     <!-- NAV -->
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
@@ -264,16 +303,15 @@
     <section class="ftco-section ftco-no-pb" id="resume-section">
       <div class="container">
         <div class="row justify-content-center pb-5">
-<div class="col-md-10 heading-section text-center ftco-animate">
-  <h1 class="big big-2">Resume</h1>
-  <h2 class="mb-4">Resume</h2>
-  <p>Senior Data Engineer with 7+ years building scalable data platforms and analytics ecosystems. Expert in end-to-end ETL, lakehouse design, and production orchestration that power forecasting, cost optimization, customer intelligence, and fraud detection.</p>
-  <p>
-    <a href="https://drive.google.com/file/d/1mayK-OjhQHVVKiowFHKU8Oh6ixfegic0/view?usp=sharing"
-       class="btn btn-primary py-3 px-5">Download CV</a>
-  </p>
-</div>
-  
+          <div class="col-md-10 heading-section text-center ftco-animate">
+            <h1 class="big big-2">Resume</h1>
+            <h2 class="mb-4">Resume</h2>
+            <p>Senior Data Engineer with 7+ years building scalable data platforms and analytics ecosystems. Expert in end-to-end ETL, lakehouse design, and production orchestration that power forecasting, cost optimization, customer intelligence, and fraud detection.</p>
+            <p>
+              <a href="https://drive.google.com/file/d/1mayK-OjhQHVVKiowFHKU8Oh6ixfegic0/view?usp=sharing"
+                 class="btn btn-primary py-3 px-5">Download CV</a>
+            </p>
+          </div>
         </div>
 
         <!-- Experience Title -->
@@ -378,6 +416,8 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
     <!-- PROJECTS -->
     <section class="ftco-section" id="project-section">
@@ -417,7 +457,7 @@
             <div class="blog-entry justify-content-end">
               <a href="https://github.com/prathameshbhavsar19/LinkedInPostGenerator"
                  class="block-20 zoom-effect"
-                 style="background-image: url('images/genai_thumbnail.png'); background-size: contain; background-position: center; aspect-ratio: 16/9%;">
+                 style="background-image: url('images/genai_thumbnail.png'); background-size: contain; background-position: center; aspect-ratio: 16/9;">
               </a>
               <div class="text mt-3 float-right d-block">
                 <h3 class="heading"><a href="https://github.com/prathameshbhavsar19/LinkedInPostGenerator">GenAI Post Generator</a></h3>
@@ -599,6 +639,24 @@
           if (e.key === 'ArrowRight') $c.trigger('next.owl.carousel');
         });
       });
+
+      // THEME TOGGLE (remember preference)
+      (function(){
+        const btn = document.getElementById('themeToggle');
+        const saved = localStorage.getItem('theme');   // "light" | "dark" | null
+        if (saved === 'light') document.body.classList.add('light');
+
+        const syncIcon = () => {
+          btn.textContent = document.body.classList.contains('light') ? '☾/☀︎' : '☀︎/☾';
+        };
+        syncIcon();
+
+        btn.addEventListener('click', () => {
+          document.body.classList.toggle('light');
+          localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+          syncIcon();
+        });
+      })();
     </script>
   </body>
 </html>
