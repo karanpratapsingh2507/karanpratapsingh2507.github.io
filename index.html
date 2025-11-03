@@ -50,7 +50,7 @@
       /*======================================
       //--//-->   EXPERIENCE CAROUSEL
       ======================================*/
-      .experience-wrap { margin-top: .5rem; }
+      .experience-wrap { margin-top: .5rem; position: relative; }
       .experience-carousel .owl-stage-outer { padding: 6px 0 16px; }
       .xp-card{
         background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
@@ -73,20 +73,53 @@
       .xp-card ul{ padding-left: 1.1rem; margin: .7rem 0 0; }
       .xp-card li{ margin: .4rem 0; color:#cfd3db; }
 
-      /* Owl arrows & dots (dark) */
-      .experience-wrap .owl-nav [class*="owl-"]{
-        background: rgba(255,255,255,0.08) !important;
-        border: 1px solid rgba(255,255,255,0.12);
-        border-radius: 10px;
-        padding: 6px 10px !important;
-        margin: 0 6px !important;
-        transition: background .2s ease, transform .2s ease;
+      /* ---- Side Arrows (visible on the sides, vertically centered) ---- */
+      .experience-wrap .owl-nav{
+        position: absolute;
+        top: 50%;
+        left: -28px;                  /* extend slightly beyond container */
+        width: calc(100% + 56px);     /* so arrows sit just outside */
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        pointer-events: none;         /* container ignores clicks */
+        z-index: 5;
       }
-      .experience-wrap .owl-nav [class*="owl-"]:hover{
-        background: rgba(255,255,255,0.18) !important;
-        transform: translateY(-1px);
+      .experience-wrap .owl-nav button.owl-prev,
+      .experience-wrap .owl-nav button.owl-next{
+        pointer-events: all;          /* buttons are clickable */
+        background: rgba(255,255,255,0.1) !important;
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px !important;
+        transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+        backdrop-filter: blur(2px);
       }
-      .experience-wrap .owl-dots { margin-top: 10px; }
+      .experience-wrap .owl-nav button.owl-prev:hover,
+      .experience-wrap .owl-nav button.owl-next:hover{
+        background: rgba(255,189,57,0.95) !important;
+        box-shadow: 0 8px 22px rgba(255,189,57,.35);
+        transform: scale(1.08);
+      }
+      .experience-wrap .owl-nav .oi{
+        color:#0f131a;               /* dark icon over amber hover */
+        line-height: 1;
+        font-size: 20px;
+      }
+      /* show white icon when not hovered (dark bg) */
+      .experience-wrap .owl-nav button.owl-prev:not(:hover) .oi,
+      .experience-wrap .owl-nav button.owl-next:not(:hover) .oi{
+        color:#ffffff;
+      }
+
+      /* Dots */
+      .experience-wrap .owl-dots { margin-top: 10px; text-align: center; }
       .experience-wrap .owl-dots .owl-dot span{
         width: 10px; height: 10px; border-radius: 999px;
         background: rgba(255,255,255,0.25);
@@ -99,6 +132,11 @@
       /* Better cards in Resume section headers */
       .heading-section h2 { color: #fff; }
       .heading-section p { color: #cfd3db; }
+
+      /* On very narrow screens keep arrows inside so they don't clip */
+      @media (max-width: 576px){
+        .experience-wrap .owl-nav { left: 0; width: 100%; }
+      }
     </style>
   </head>
 
@@ -284,7 +322,7 @@
               </ul>
             </div>
 
-            <!-- ITEM 4 (example) -->
+            <!-- ITEM 4 -->
             <div class="xp-card">
               <span class="date">Feb 2020 - Jul 2022</span>
               <h3 class="role">Senior Data Scientist</h3>
@@ -296,7 +334,7 @@
               </ul>
             </div>
 
-            <!-- ITEM 4 (example) -->
+            <!-- ITEM 5 -->
             <div class="xp-card">
               <span class="date">Jun 2018 - Jan 2020</span>
               <h3 class="role">Software Engineer</h3>
@@ -382,7 +420,7 @@
             <div class="blog-entry justify-content-end">
               <a href="https://github.com/prathameshbhavsar19/LinkedInPostGenerator"
                  class="block-20 zoom-effect"
-                 style="background-image: url('images/genai_thumbnail.png'); background-size: contain; background-position: center; aspect-ratio: 16/9;">
+                 style="background-image: url('images/genai_thumbnail.png'); background-size: contain; background-position: center; aspect-ratio: 16/9%;">
               </a>
               <div class="text mt-3 float-right d-block">
                 <h3 class="heading"><a href="https://github.com/prathameshbhavsar19/LinkedInPostGenerator">GenAI Post Generator</a></h3>
@@ -546,10 +584,9 @@
           margin: 24,
           nav: true,
           dots: true,
-          smartSpeed: 550,
+          smartSpeed: 600,
           responsive: {
             0:   { items: 1 },
-            768: { items: 1 },
             992: { items: 2 }
           },
           navText: [
