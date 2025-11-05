@@ -21,6 +21,83 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
+      /* === About: screenshot-perfect card (scoped) === */
+#about-section .bio-card{
+  background:#1a1f27;              /* dark slate like screenshot */
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  padding:22px 22px 18px;
+  color:#e7e9ee;
+  box-shadow:0 16px 36px rgba(0,0,0,.35);
+  width:100%;
+}
+
+/* circular photo with thick gold ring + thin white ring */
+#about-section .bio-photo-wrap{ display:grid; place-items:center; margin-bottom:10px; }
+#about-section .bio-photo{
+  width: 210px; max-width: 78%;
+  aspect-ratio:1/1; border-radius:999px; position:relative;
+  background:#e3ad00;                    /* gold backdrop */
+  display:grid; place-items:center;
+  box-shadow:0 12px 30px rgba(227,173,0,.35);
+}
+#about-section .bio-photo::before{       /* outer subtle halo */
+  content:""; position:absolute; inset:-6px; border-radius:50%;
+  box-shadow:0 0 0 4px rgba(227,173,0,.18);
+}
+#about-section .bio-photo::after{        /* thin white ring */
+  content:""; position:absolute; inset:12px; border-radius:50%;
+  border:5px solid #ffffff; opacity:.98;
+}
+#about-section .bio-photo img{
+  position:relative; z-index:1;
+  width:76%; height:76%; object-fit:cover; border-radius:50%;
+  box-shadow:0 6px 18px rgba(0,0,0,.35);
+}
+
+/* caption line */
+#about-section .bio-caption{
+  text-align:center; margin-top:8px;
+  font-weight:700; font-size:14px; color:#cfe0f5;
+}
+
+/* blurb */
+#about-section .bio-text{
+  margin-top:8px; font-size:13.5px; line-height:1.6;
+  color:#cfd3db;
+}
+
+/* Quick bits heading + list */
+#about-section .bio-bullets{ margin:14px 0 6px; }
+#about-section .bio-bullets h4{
+  font-size:20px; font-weight:800; color:#ffffff;
+  margin:0 0 10px;
+}
+#about-section .bio-bullets ul{
+  padding-left: 18px; margin:0 0 10px;
+  list-style: disc;
+}
+#about-section .bio-bullets li{ margin:6px 0; color:#cfd3db; font-size:14px; }
+
+/* tech pill chips */
+#about-section .tech-pills{ display:flex; flex-wrap:wrap; gap:8px; }
+#about-section .tech-pill{
+  font-size:12px; line-height:1; padding:7px 10px;
+  border-radius:999px; color:#b0b3b8;
+  border:1px solid rgba(255,255,255,.12);
+  background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+  box-shadow:0 1px 0 rgba(255,255,255,.04) inset;
+}
+
+/* light theme parity */
+body.light #about-section .bio-card{ background:#12263d; border-color:rgba(234,242,255,.14); }
+body.light #about-section .bio-caption{ color:#e7f0ff; }
+body.light #about-section .tech-pill{ border-color:rgba(234,242,255,.18); color:#9fb6cf; }
+
+@media (max-width:576px){
+  #about-section .bio-photo{ max-width:86%; }
+}
+
       /* === About: compact profile card (scoped) === */
 #about-section .profile-card{
   background: #12171f;
@@ -380,17 +457,40 @@ body.light #about-section .profile-meta .label{ color:#b9d1ea; }
         <div class="row">
           <div class="row d-flex align-items-stretch">
 <div class="col-md-6 col-lg-5 d-flex">
-  <div class="profile-card">
-    <div class="profile-header">
-      <div class="profile-photo" aria-hidden="true">
+  <aside class="bio-card">
+    <div class="bio-photo-wrap">
+      <div class="bio-photo">
         <img src="images/about-me.jpeg" alt="Karan Pratap Singh portrait">
       </div>
-      <div class="profile-meta">
-        <div class="profile-name">Karan Pratap Singh</div>
-        <p><span class="label">Experience:</span> 7+ years</p>
-        <p><span class="label">Address:</span> Dallas, Texas</p>
-      </div>
     </div>
+
+    <div class="bio-caption">Hey! I'm Karan 👋</div>
+
+    <p class="bio-text">
+      I like building things that feel simple and run fast. Lately I’m tinkering with ML agents and data plumbing.
+      I care about clean UIs, readable code, and shipping small wins often.
+    </p>
+
+    <div class="bio-bullets">
+      <h4>Quick bits</h4>
+      <ul>
+        <li>What I’m into: ML/AI agents, data engineering, cloud.</li>
+        <li>Previously @ Enel X — shipped automations that saved 100+ hrs/month.</li>
+      </ul>
+    </div>
+
+    <div class="tech-pills">
+      <span class="tech-pill">Python</span>
+      <span class="tech-pill">FastAPI</span>
+      <span class="tech-pill">React</span>
+      <span class="tech-pill">PostgreSQL/BigQuery</span>
+      <span class="tech-pill">Docker</span>
+      <span class="tech-pill">GCP/AWS</span>
+      <span class="tech-pill">Airflow</span>
+    </div>
+  </aside>
+</div>
+
 
     <!-- Skills -->
     <p class="title-s" style="margin-bottom:8px;">Skills</p>
