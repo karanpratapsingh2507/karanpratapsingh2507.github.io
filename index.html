@@ -21,6 +21,90 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
+      /* === About: compact profile card (scoped) === */
+#about-section .profile-card{
+  background: #12171f;
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.28);
+  width: 100%;
+}
+
+#about-section .profile-header{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+#about-section .profile-photo{
+  position: relative;
+  width: 120px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: #e0a300;               /* gold circle behind */
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  box-shadow: 0 10px 28px rgba(224,163,0,.35);
+}
+#about-section .profile-photo img{
+  width: 92%;
+  height: 92%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #0f131a;          /* thin dark ring */
+}
+
+#about-section .profile-meta p{
+  margin: 4px 0;
+  color: #cfd3db;
+}
+#about-section .profile-meta .label{
+  color:#9fb6cf;
+  font-weight: 600;
+  margin-right: 6px;
+}
+#about-section .profile-name{
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+}
+
+/* Skills block */
+#about-section .kps-skill{
+  margin-top: 12px;
+}
+#about-section .kps-skill label{
+  display:flex; justify-content: space-between; align-items:center;
+  font-size: 14px; color:#cfd3db; margin-bottom: 6px;
+}
+#about-section .kps-skill .track{
+  height: 10px; border-radius: 8px;
+  background: rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+#about-section .kps-skill .bar{
+  height: 100%;
+  background-image: linear-gradient(90deg, #ffbd39, #ff8a39);
+  width: var(--pct,100%);
+}
+
+/* Light theme harmony */
+body.light #about-section .profile-card{
+  background:#12263d; border-color: rgba(234,242,255,.14);
+}
+body.light #about-section .profile-photo{
+  box-shadow: 0 10px 28px rgba(255,189,57,.35);
+}
+body.light #about-section .profile-meta p{ color:#cfe0f5; }
+body.light #about-section .profile-meta .label{ color:#b9d1ea; }
+
+@media (max-width: 480px){
+  #about-section .profile-photo{ width: 100px; }
+}
+
         /* Prevent long repo names from overflowing cards */
 .kps-card h3,
 .kps-card h3 a{
@@ -295,15 +379,54 @@
       <div class="container">
         <div class="row">
           <div class="row d-flex align-items-stretch">
-            <div class="col-md-6 col-lg-5 d-flex">
-              <div class="img-about img d-flex align-items-stretch">
-                <div class="overlay">
-                  <div class="row">
-                    <div class="col-sm-6 col-md-5">
-                      <div class="about-img">
-                        <img src="images/about-me.jpeg" class="img-fluid rounded b-shadow-a" alt="Karan portrait">
-                      </div>
-                    </div>
+<div class="col-md-6 col-lg-5 d-flex">
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="profile-photo" aria-hidden="true">
+        <img src="images/about-me.jpeg" alt="Karan Pratap Singh portrait">
+      </div>
+      <div class="profile-meta">
+        <div class="profile-name">Karan Pratap Singh</div>
+        <p><span class="label">Experience:</span> 7+ years</p>
+        <p><span class="label">Address:</span> Dallas, Texas</p>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <p class="title-s" style="margin-bottom:8px;">Skills</p>
+
+    <div class="kps-skill" style="--pct:100%;">
+      <label>SQL <span>100%</span></label>
+      <div class="track"><div class="bar"></div></div>
+    </div>
+
+    <div class="kps-skill" style="--pct:100%;">
+      <label>Python <span>100%</span></label>
+      <div class="track"><div class="bar"></div></div>
+    </div>
+
+    <div class="kps-skill" style="--pct:100%;">
+      <label>Data Engineering <span>100%</span></label>
+      <div class="track"><div class="bar"></div></div>
+    </div>
+
+    <div class="kps-skill" style="--pct:100%;">
+      <label>Machine Learning <span>100%</span></label>
+      <div class="track"><div class="bar"></div></div>
+    </div>
+
+    <div class="kps-skill" style="--pct:100%;">
+      <label>Cloud (Azure/GCP/AWS) <span>100%</span></label>
+      <div class="track"><div class="bar"></div></div>
+    </div>
+
+    <div class="kps-skill" style="--pct:100%;">
+      <label>ETL &amp; Big Data <span>100%</span></label>
+      <div class="track"><div class="bar"></div></div>
+    </div>
+  </div>
+</div>
+
                     <div class="col-sm-6 col-md-7">
                       <div class="about-info">
                         <p><span class="title-s">Name: </span> <span>Karan Pratap Singh</span></p>
