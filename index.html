@@ -21,176 +21,96 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-      /* === About: screenshot-perfect card (scoped) === */
-#about-section .bio-card{
-  background:#1a1f27;              /* dark slate like screenshot */
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:18px;
-  padding:22px 22px 18px;
-  color:#e7e9ee;
-  box-shadow:0 16px 36px rgba(0,0,0,.35);
-  width:100%;
-}
+      /* ======= ABOUT (new two-column layout) ======= */
+      .about-grid{
+        display:grid; grid-template-columns: 360px 1fr; gap:28px; align-items:start;
+      }
+      @media (max-width:992px){ .about-grid{ grid-template-columns:1fr } }
 
-/* circular photo with thick gold ring + thin white ring */
-#about-section .bio-photo-wrap{ display:grid; place-items:center; margin-bottom:10px; }
-#about-section .bio-photo{
-  width: 210px; max-width: 78%;
-  aspect-ratio:1/1; border-radius:999px; position:relative;
-  background:#e3ad00;                    /* gold backdrop */
-  display:grid; place-items:center;
-  box-shadow:0 12px 30px rgba(227,173,0,.35);
-}
-#about-section .bio-photo::before{       /* outer subtle halo */
-  content:""; position:absolute; inset:-6px; border-radius:50%;
-  box-shadow:0 0 0 4px rgba(227,173,0,.18);
-}
-#about-section .bio-photo::after{        /* thin white ring */
-  content:""; position:absolute; inset:12px; border-radius:50%;
-  border:5px solid #ffffff; opacity:.98;
-}
-#about-section .bio-photo img{
-  position:relative; z-index:1;
-  width:76%; height:76%; object-fit:cover; border-radius:50%;
-  box-shadow:0 6px 18px rgba(0,0,0,.35);
-}
+      .about-card{
+        background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+        border:1px solid rgba(255,255,255,.08);
+        box-shadow: 0 18px 40px rgba(0,0,0,.25);
+        border-radius:16px; padding:22px;
+      }
 
-/* caption line */
-#about-section .bio-caption{
-  text-align:center; margin-top:8px;
-  font-weight:700; font-size:14px; color:#cfe0f5;
-}
+      .portrait-wrap{ display:grid; place-items:center; margin-bottom:10px }
+      .portrait{
+        width:180px; aspect-ratio:1; border-radius:50%;
+        padding:10px; background: radial-gradient(65% 65% at 30% 30%, rgba(255,189,57,.25), transparent 60%),
+                                radial-gradient(65% 65% at 70% 70%, rgba(139,92,246,.20), transparent 60%),
+                                rgba(255,255,255,.04);
+        border:1px solid rgba(255,255,255,.12);
+        box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      }
+      .portrait img{ width:100%; height:100%; border-radius:50%; object-fit:cover; display:block }
 
-/* blurb */
-#about-section .bio-text{
-  margin-top:8px; font-size:13.5px; line-height:1.6;
-  color:#cfd3db;
-}
+      .about-card .mini{ color:#b0b3b8; font-size:.95rem; }
+      .kv{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px }
+      .chip{
+        font-size:12px; padding:6px 10px; border-radius:999px;
+        color:#cfd3db; background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+      }
 
-/* Quick bits heading + list */
-#about-section .bio-bullets{ margin:14px 0 6px; }
-#about-section .bio-bullets h4{
-  font-size:20px; font-weight:800; color:#ffffff;
-  margin:0 0 10px;
-}
-#about-section .bio-bullets ul{
-  padding-left: 18px; margin:0 0 10px;
-  list-style: disc;
-}
-#about-section .bio-bullets li{ margin:6px 0; color:#cfd3db; font-size:14px; }
+      /* right column */
+      .about-right h2{ color:#fff; margin:0 0 10px }
+      .about-right p.lead{ color:#cfd3db; margin:0 0 16px }
 
-/* tech pill chips */
-#about-section .tech-pills{ display:flex; flex-wrap:wrap; gap:8px; }
-#about-section .tech-pill{
-  font-size:12px; line-height:1; padding:7px 10px;
-  border-radius:999px; color:#b0b3b8;
-  border:1px solid rgba(255,255,255,.12);
-  background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
-  box-shadow:0 1px 0 rgba(255,255,255,.04) inset;
-}
+      /* key/value list that looks like a table */
+      .kvlist{ margin-top:14px }
+      .kvrow{ display:grid; grid-template-columns: 160px 1fr; gap:14px; padding:10px 0;
+              border-top:1px solid rgba(255,255,255,.08) }
+      .kvrow:first-child{ border-top:0 }
+      .kvrow .k{ color:#9aa0a6 }
+      .kvrow .v{ color:#e7e9ee }
 
-/* light theme parity */
-body.light #about-section .bio-card{ background:#12263d; border-color:rgba(234,242,255,.14); }
-body.light #about-section .bio-caption{ color:#e7f0ff; }
-body.light #about-section .tech-pill{ border-color:rgba(234,242,255,.18); color:#9fb6cf; }
+      /* === Screenshot-style left card === */
+      #about-section .bio-card{
+        background:#1a1f27; border:1px solid rgba(255,255,255,.08);
+        border-radius:18px; padding:22px 22px 18px; color:#e7e9ee;
+        box-shadow:0 16px 36px rgba(0,0,0,.35); width:100%;
+      }
+      #about-section .bio-photo-wrap{ display:grid; place-items:center; margin-bottom:10px; }
+      #about-section .bio-photo{
+        width:210px; max-width:78%; aspect-ratio:1/1; border-radius:999px; position:relative;
+        background:#e3ad00; display:grid; place-items:center; box-shadow:0 12px 30px rgba(227,173,0,.35);
+      }
+      #about-section .bio-photo::before{ content:""; position:absolute; inset:-6px; border-radius:50%;
+        box-shadow:0 0 0 4px rgba(227,173,0,.18); }
+      #about-section .bio-photo::after{ content:""; position:absolute; inset:12px; border-radius:50%;
+        border:5px solid #ffffff; opacity:.98; }
+      #about-section .bio-photo img{
+        position:relative; z-index:1; width:76%; height:76%; object-fit:cover; border-radius:50%;
+        box-shadow:0 6px 18px rgba(0,0,0,.35);
+      }
+      #about-section .bio-caption{ text-align:center; margin-top:8px; font-weight:700; font-size:14px; color:#cfe0f5; }
+      #about-section .bio-text{ margin-top:8px; font-size:13.5px; line-height:1.6; color:#cfd3db; }
+      #about-section .bio-bullets{ margin:14px 0 6px; }
+      #about-section .bio-bullets h4{ font-size:20px; font-weight:800; color:#ffffff; margin:0 0 10px; }
+      #about-section .bio-bullets ul{ padding-left:18px; margin:0 0 10px; list-style:disc; }
+      #about-section .bio-bullets li{ margin:6px 0; color:#cfd3db; font-size:14px; }
+      #about-section .tech-pills{ display:flex; flex-wrap:wrap; gap:8px; }
+      #about-section .tech-pill{
+        font-size:12px; line-height:1; padding:7px 10px; border-radius:999px; color:#b0b3b8;
+        border:1px solid rgba(255,255,255,.12);
+        background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+        box-shadow:0 1px 0 rgba(255,255,255,.04) inset;
+      }
+      body.light #about-section .bio-card{ background:#12263d; border-color:rgba(234,242,255,.14); }
+      body.light #about-section .bio-caption{ color:#e7f0ff; }
+      body.light #about-section .tech-pill{ border-color:rgba(234,242,255,.18); color:#9fb6cf; }
+      @media (max-width:576px){ #about-section .bio-photo{ max-width:86%; } }
 
-@media (max-width:576px){
-  #about-section .bio-photo{ max-width:86%; }
-}
+      /* Prevent long repo names from overflowing cards */
+      .kps-card h3,
+      .kps-card h3 a{
+        line-height: 1.25;
+        max-width: 100%;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+        hyphens: auto;
+      }
 
-      /* === About: compact profile card (scoped) === */
-#about-section .profile-card{
-  background: #12171f;
-  border: 1px solid rgba(255,255,255,.10);
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 18px 40px rgba(0,0,0,.28);
-  width: 100%;
-}
-
-#about-section .profile-header{
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 18px;
-}
-
-#about-section .profile-photo{
-  position: relative;
-  width: 120px;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  background: #e0a300;               /* gold circle behind */
-  display: grid;
-  place-items: center;
-  flex: 0 0 auto;
-  box-shadow: 0 10px 28px rgba(224,163,0,.35);
-}
-#about-section .profile-photo img{
-  width: 92%;
-  height: 92%;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid #0f131a;          /* thin dark ring */
-}
-
-#about-section .profile-meta p{
-  margin: 4px 0;
-  color: #cfd3db;
-}
-#about-section .profile-meta .label{
-  color:#9fb6cf;
-  font-weight: 600;
-  margin-right: 6px;
-}
-#about-section .profile-name{
-  font-size: 18px;
-  font-weight: 800;
-  color: #fff;
-}
-
-/* Skills block */
-#about-section .kps-skill{
-  margin-top: 12px;
-}
-#about-section .kps-skill label{
-  display:flex; justify-content: space-between; align-items:center;
-  font-size: 14px; color:#cfd3db; margin-bottom: 6px;
-}
-#about-section .kps-skill .track{
-  height: 10px; border-radius: 8px;
-  background: rgba(255,255,255,0.08);
-  overflow: hidden;
-}
-#about-section .kps-skill .bar{
-  height: 100%;
-  background-image: linear-gradient(90deg, #ffbd39, #ff8a39);
-  width: var(--pct,100%);
-}
-
-/* Light theme harmony */
-body.light #about-section .profile-card{
-  background:#12263d; border-color: rgba(234,242,255,.14);
-}
-body.light #about-section .profile-photo{
-  box-shadow: 0 10px 28px rgba(255,189,57,.35);
-}
-body.light #about-section .profile-meta p{ color:#cfe0f5; }
-body.light #about-section .profile-meta .label{ color:#b9d1ea; }
-
-@media (max-width: 480px){
-  #about-section .profile-photo{ width: 100px; }
-}
-
-        /* Prevent long repo names from overflowing cards */
-.kps-card h3,
-.kps-card h3 a{
-  line-height: 1.25;
-  max-width: 100%;
-  word-break: break-word;      /* legacy */
-  overflow-wrap: anywhere;     /* modern */
-  hyphens: auto;
-}
       /*======================================
       //--//-->   BASE TWEAKS
       ======================================*/
@@ -203,46 +123,15 @@ body.light #about-section .profile-meta .label{ color:#b9d1ea; }
       //--//-->   THEME TOGGLE (top-right)
       ======================================*/
       .theme-toggle{
-        position: fixed;
-        top: 16px;
-        right: 16px;
-        background: #0b0f14;
-        color: #eaf2ff;
-        border: 2px solid #0aa2ff;
-        border-radius: 14px;
-        padding: 8px 14px;
-        font-size: 16px;
-        line-height: 1;
-        z-index: 1000;
+        position: fixed; top: 16px; right: 16px; background: #0b0f14; color: #eaf2ff;
+        border: 2px solid #0aa2ff; border-radius: 14px; padding: 8px 14px; font-size: 16px; line-height: 1; z-index: 1000;
         box-shadow: 0 0 0 2px rgba(10,162,255,0.15), 0 8px 24px rgba(0,0,0,.35);
         transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
       }
-      .theme-toggle:hover{
-        transform: translateY(-1px);
-        background: #0e141c;
-        border-color: #22b0ff;
-        box-shadow: 0 0 0 3px rgba(34,176,255,0.25), 0 10px 28px rgba(0,0,0,.45);
-      }
+      .theme-toggle:hover{ transform: translateY(-1px); background: #0e141c; border-color: #22b0ff;
+        box-shadow: 0 0 0 3px rgba(34,176,255,0.25), 0 10px 28px rgba(0,0,0,.45); }
       .theme-toggle:active{ transform: scale(0.97); }
       .theme-toggle:focus{ outline: none; box-shadow: 0 0 0 4px rgba(34,176,255,0.35), 0 8px 24px rgba(0,0,0,.45); }
-
-      /*======================================
-      //--//-->   ABOUT
-      ======================================*/
-      .about-mf .box-shadow-full { padding-top: 4rem; padding-bottom: 4rem; }
-      .about-mf .about-img { margin-bottom: 2rem; }
-      .about-mf .about-img img { margin-left: 10px; border-radius: 14px; }
-      .skill-mf .progress { margin: .5rem 0 1.2rem 0; border-radius: 6px; height: .7rem; background: rgba(255,255,255,0.08); }
-      .skill-mf .progress .progress-bar { height: .7rem; background-image: linear-gradient(90deg, #ffbd39, #ff8a39); }
-
-      /* Typing */
-      #typing-animation { position: relative; font-size: 30px; font-weight: 700; color: #fff; overflow: hidden; white-space: nowrap; }
-      @keyframes typing { from { width: 0; } to { width: 100%; } }
-      @keyframes typing-cursor { from { width: 5px; } to { width: 0; } }
-
-      /* Project thumb zoom */
-      .zoom-effect { overflow: hidden; transition: transform .3s ease-out; border-radius: 16px; }
-      .zoom-effect:hover { transform: scale(1.04); }
 
       /*======================================
       //--//-->   EXPERIENCE CAROUSEL
@@ -253,73 +142,40 @@ body.light #about-section .profile-meta .label{ color:#b9d1ea; }
         background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
         border: 1px solid rgba(255,255,255,0.08);
         box-shadow: 0 18px 40px rgba(0,0,0,.25);
-        border-radius: 16px;
-        color: #e7e9ee;
-        padding: 20px 22px;
-        min-height: 360px;
+        border-radius: 16px; color: #e7e9ee; padding: 20px 22px; min-height: 360px;
       }
       .xp-card .date{ color:#ffbd39; font-weight:800; letter-spacing:.2px; text-transform: none; }
       .xp-card .role{ margin:.35rem 0 .15rem; font-weight:800; font-size: 1.25rem; color:#fff; }
-      .xp-card .company{
-        text-transform: uppercase;
-        letter-spacing: .14em;
-        font-size: .8rem;
-        color: #b0b3b8;
-        margin-bottom: .6rem;
-      }
+      .xp-card .company{ text-transform: uppercase; letter-spacing: .14em; font-size: .8rem; color: #b0b3b8; margin-bottom: .6rem; }
       .xp-card ul{ padding-left: 1.1rem; margin: .7rem 0 0; }
       .xp-card li{ margin: .4rem 0; color:#cfd3db; }
 
-      /* ---- Side Arrows (visible on the sides, vertically centered) ---- */
       .experience-wrap .owl-nav{
-        position: absolute;
-        top: 50%;
-        left: -28px;
-        width: calc(100% + 56px);
-        transform: translateY(-50%);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        pointer-events: none;
-        z-index: 5;
+        position: absolute; top: 50%; left: -28px; width: calc(100% + 56px);
+        transform: translateY(-50%); display: flex; justify-content: space-between; align-items: center;
+        pointer-events: none; z-index: 5;
       }
       .experience-wrap .owl-nav button.owl-prev,
       .experience-wrap .owl-nav button.owl-next{
-        pointer-events: all;
-        background: rgba(255,255,255,0.1) !important;
-        border: 1px solid rgba(255,255,255,0.15);
-        border-radius: 50%;
-        width: 48px;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 22px !important;
-        transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
-        backdrop-filter: blur(2px);
+        pointer-events: all; background: rgba(255,255,255,0.1) !important; border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 50%; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+        font-size: 22px !important; transition: transform .2s ease, background .2s ease, box-shadow .2s ease; backdrop-filter: blur(2px);
       }
       .experience-wrap .owl-nav button.owl-prev:hover,
       .experience-wrap .owl-nav button.owl-next:hover{
-        background: rgba(255,189,57,0.95) !important;
-        box-shadow: 0 8px 22px rgba(255,189,57,.35);
-        transform: scale(1.08);
+        background: rgba(255,189,57,0.95) !important; box-shadow: 0 8px 22px rgba(255,189,57,.35); transform: scale(1.08);
       }
       .experience-wrap .owl-nav .oi{ color:#0f131a; line-height: 1; font-size: 20px; }
       .experience-wrap .owl-nav button.owl-prev:not(:hover) .oi,
       .experience-wrap .owl-nav button.owl-next:not(:hover) .oi{ color:#ffffff; }
 
-      /* Dots */
       .experience-wrap .owl-dots { margin-top: 10px; text-align: center; }
       .experience-wrap .owl-dots .owl-dot span{
-        width: 10px; height: 10px; border-radius: 999px;
-        background: rgba(255,255,255,0.25);
+        width: 10px; height: 10px; border-radius: 999px; background: rgba(255,255,255,0.25);
         transition: transform .2s ease, background .2s ease;
       }
-      .experience-wrap .owl-dots .owl-dot.active span{
-        background: #ffbd39; transform: scale(1.15);
-      }
+      .experience-wrap .owl-dots .owl-dot.active span{ background: #ffbd39; transform: scale(1.15); }
 
-      /* Better cards in Resume section headers */
       .heading-section h2 { color: #fff; }
       .heading-section p { color: #cfd3db; }
 
@@ -331,11 +187,7 @@ body.light #about-section .profile-meta .label{ color:#b9d1ea; }
       body.light .navbar-dark .navbar-brand,
       body.light .navbar-dark .nav-link{ color:#eaf2ff !important; }
       body.light .big-4, body.light h1.big, body.light h2 { color:#ffffff; }
-      body.light .xp-card{
-        background: #12263d;
-        color: #e7f0ff;
-        border: 1px solid rgba(234,242,255,0.12);
-      }
+      body.light .xp-card{ background: #12263d; color: #e7f0ff; border: 1px solid rgba(234,242,255,0.12); }
       body.light .xp-card .company{ color:#9fb6cf; }
       body.light .experience-wrap .owl-nav button.owl-prev,
       body.light .experience-wrap .owl-nav button.owl-next{
@@ -360,8 +212,7 @@ body.light #about-section .profile-meta .label{ color:#b9d1ea; }
       }
 
       .kps-projects__grid{
-        display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-        gap:16px;
+        display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:16px;
       }
       .kps-card{
         display:flex; flex-direction:column; gap:10px; padding:16px;
@@ -373,9 +224,7 @@ body.light #about-section .profile-meta .label{ color:#b9d1ea; }
       .kps-card h3 a{ color:inherit; text-decoration:none }
       .kps-card p{ margin:0; color:#cfd3db; font-size:14px; min-height:20px }
       .kps-meta{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; color:#b0b3b8; font-size:12px }
-      .kps-topic{
-        font-size:11px; padding:4px 8px; border:1px solid rgba(255,255,255,.12); border-radius:999px; color:#b0b3b8
-      }
+      .kps-topic{ font-size:11px; padding:4px 8px; border:1px solid rgba(255,255,255,.12); border-radius:999px; color:#b0b3b8 }
       .kps-skel{
         animation: kpsPulse 1.2s infinite ease-in-out;
         background: linear-gradient(90deg, rgba(255,255,255,.05), rgba(255,255,255,.08) 25%, rgba(255,255,255,.05) 50%);
@@ -383,16 +232,7 @@ body.light #about-section .profile-meta .label{ color:#b9d1ea; }
       }
       @keyframes kpsPulse{0%{background-position:0 0}100%{background-position:-200% 0}}
 
-      body.light .kps-card{
-        background:#12263d; border-color:rgba(234,242,255,0.12); color:#e7f0ff;
-      }
-      body.light .kps-card p{ color:#cfe0f5 }
-      body.light .kps-topic{ border-color:rgba(234,242,255,.18); color:#9fb6cf }
-
-      /* On very narrow screens keep arrows inside so they don't clip */
-      @media (max-width: 576px){
-        .experience-wrap .owl-nav { left: 0; width: 100%; }
-      }
+      @media (max-width: 576px){ .experience-wrap .owl-nav { left: 0; width: 100%; } }
     </style>
   </head>
 
@@ -454,114 +294,68 @@ body.light #about-section .profile-meta .label{ color:#b9d1ea; }
     <!-- ABOUT -->
     <section class="ftco-about img ftco-section ftco-no-pb" id="about-section">
       <div class="container">
-        <div class="row">
-          <div class="row d-flex align-items-stretch">
-<div class="col-md-6 col-lg-5 d-flex">
-  <aside class="bio-card">
-    <div class="bio-photo-wrap">
-      <div class="bio-photo">
-        <img src="images/about-me.jpeg" alt="Karan Pratap Singh portrait">
-      </div>
-    </div>
-
-    <div class="bio-caption">Hey! I'm Karan 👋</div>
-
-    <p class="bio-text">
-      I like building things that feel simple and run fast. Lately I’m tinkering with ML agents and data plumbing.
-      I care about clean UIs, readable code, and shipping small wins often.
-    </p>
-
-    <div class="bio-bullets">
-      <h4>Quick bits</h4>
-      <ul>
-        <li>What I’m into: ML/AI agents, data engineering, cloud.</li>
-        <li>Previously @ Enel X — shipped automations that saved 100+ hrs/month.</li>
-      </ul>
-    </div>
-
-    <div class="tech-pills">
-      <span class="tech-pill">Python</span>
-      <span class="tech-pill">FastAPI</span>
-      <span class="tech-pill">React</span>
-      <span class="tech-pill">PostgreSQL/BigQuery</span>
-      <span class="tech-pill">Docker</span>
-      <span class="tech-pill">GCP/AWS</span>
-      <span class="tech-pill">Airflow</span>
-    </div>
-  </aside>
-</div>
-
-
-    <!-- Skills -->
-    <p class="title-s" style="margin-bottom:8px;">Skills</p>
-
-    <div class="kps-skill" style="--pct:100%;">
-      <label>SQL <span>100%</span></label>
-      <div class="track"><div class="bar"></div></div>
-    </div>
-
-    <div class="kps-skill" style="--pct:100%;">
-      <label>Python <span>100%</span></label>
-      <div class="track"><div class="bar"></div></div>
-    </div>
-
-    <div class="kps-skill" style="--pct:100%;">
-      <label>Data Engineering <span>100%</span></label>
-      <div class="track"><div class="bar"></div></div>
-    </div>
-
-    <div class="kps-skill" style="--pct:100%;">
-      <label>Machine Learning <span>100%</span></label>
-      <div class="track"><div class="bar"></div></div>
-    </div>
-
-    <div class="kps-skill" style="--pct:100%;">
-      <label>Cloud (Azure/GCP/AWS) <span>100%</span></label>
-      <div class="track"><div class="bar"></div></div>
-    </div>
-
-    <div class="kps-skill" style="--pct:100%;">
-      <label>ETL &amp; Big Data <span>100%</span></label>
-      <div class="track"><div class="bar"></div></div>
-    </div>
-  </div>
-</div>
-
-                    <div class="col-sm-6 col-md-7">
-                      <div class="about-info">
-                        <p><span class="title-s">Name: </span> <span>Karan Pratap Singh</span></p>
-                        <p><span class="title-s">Experience: </span> <span>7+ years</span></p>
-                        <p><span class="title-s">Address: </span> <span>Dallas, Texas</span></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+        <div class="about-grid">
+          <!-- LEFT CARD -->
+          <aside class="bio-card">
+            <div class="bio-photo-wrap">
+              <div class="bio-photo">
+                <!-- Update this path if needed -->
+                <img src="images/about-me.jpeg" alt="Karan Pratap Singh portrait">
               </div>
             </div>
 
-            <div class="col-md-6 col-lg-7 pl-lg-5 pb-5">
-              <div class="row justify-content-start pb-3">
-                <div class="col-md-12 heading-section ftco-animate">
-                  <h1 class="big">About</h1>
-                  <h2 class="mb-4">About Me</h2>
-                  <p>I am a Senior Data Engineer with a Bachelor’s in Computer Science and a Master’s in Business Analytics, specializing in architecting large-scale, highly reliable data ecosystems. I build end-to-end pipelines and lakehouse architectures powering analytics and AI across e-commerce, healthcare, retail, and SaaS. I focus on orchestration, governance, quality, and CI/CD to deliver production-grade platforms that reduce latency, cut costs, and drive measurable business impact.</p>
-                  <ul class="about-info mt-4 px-md-0 px-2">
-                    <li class="d-flex"><span>Profile:</span> <span>Software Development, Machine Learning &amp; Data Engineering</span></li>
-                    <li class="d-flex"><span>Domain:</span> <span>AI/ML, Cloud & Data Platforms, Predictive Analytics, Intelligent Systems, Automation</span></li>
-                    <li class="d-flex"><span>Education:</span> <span>Master of Science in Business Analytics</span></li>
-                    <li class="d-flex"><span>BI Tools:</span> <span>Power BI, Tableau</span></li>
-                    <li class="d-flex"><span>Core Skills:</span> <span>Cloud (Azure, GCP, AWS), PySpark, Airflow, BigQuery, Data Modeling, ML, SQL, Python, Git, JIRA, CI/CD, NLP</span></li>
-                    <li class="d-flex"><span>Interest:</span> <span>Music, hiking &amp; swimming</span></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="counter-wrap ftco-animate d-flex mt-md-3">
-                <div class="text">
-                  <p><a href="https://www.linkedin.com/in/kps25/" class="btn btn-primary py-3 px-3">LinkedIn</a></p>
-                </div>
-              </div>
+            <div class="bio-caption">Hey! I'm Karan 👋</div>
+
+            <p class="bio-text">
+              I like turning business goals into clear, deliverable roadmaps—and then shipping them.
+              I’m into AI + automation for crisp KPIs, predictable delivery, and lighter ops.
+            </p>
+
+            <div class="bio-bullets">
+              <h4>Quick bits</h4>
+              <ul>
+                <li>What I’m into: ML/AI, data engineering, cloud.</li>
+                <li>Previously @ Walmart & UHG — shipped data platforms and automations.</li>
+              </ul>
             </div>
-          </div><!-- /row inner -->
+
+            <div class="tech-pills">
+              <span class="tech-pill">Python</span>
+              <span class="tech-pill">SQL</span>
+              <span class="tech-pill">Airflow</span>
+              <span class="tech-pill">BigQuery</span>
+              <span class="tech-pill">Databricks</span>
+              <span class="tech-pill">Power BI</span>
+              <span class="tech-pill">AWS · Azure · GCP</span>
+              <span class="tech-pill">Lakehouse</span>
+            </div>
+          </aside>
+
+          <!-- RIGHT CONTENT -->
+          <div class="about-right">
+            <h1 class="big">About</h1>
+            <h2>About Me</h2>
+            <p class="lead">
+              I am a Senior Data Engineer with a Bachelor’s in Computer Science and a Master’s in Business Analytics,
+              specializing in architecting large-scale, highly reliable data ecosystems. I build end-to-end pipelines
+              and lakehouse architectures powering analytics and AI across e-commerce, healthcare, retail, and SaaS.
+              I focus on orchestration, governance, quality, and CI/CD to deliver production-grade platforms that
+              reduce latency, cut costs, and drive measurable business impact.
+            </p>
+
+            <div class="kvlist">
+              <div class="kvrow"><div class="k">Profile</div><div class="v">Software Development, Machine Learning & Data Engineering</div></div>
+              <div class="kvrow"><div class="k">Domain</div><div class="v">AI/ML, Cloud & Data Platforms, Predictive Analytics, Intelligent Systems, Automation</div></div>
+              <div class="kvrow"><div class="k">Education</div><div class="v">Master of Science in Business Analytics</div></div>
+              <div class="kvrow"><div class="k">BI Tools</div><div class="v">Power BI, Tableau</div></div>
+              <div class="kvrow"><div class="k">Core Skills</div><div class="v">Cloud (Azure, GCP, AWS), PySpark, Airflow, BigQuery, Data Modeling, ML, SQL, Python, Git, CI/CD, NLP</div></div>
+              <div class="kvrow"><div class="k">Interest</div><div class="v">Music, hiking & swimming</div></div>
+            </div>
+
+            <div style="margin-top:16px">
+              <a href="https://www.linkedin.com/in/kps25/" class="btn btn-primary py-3 px-3">LinkedIn</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -581,24 +375,21 @@ body.light #about-section .profile-meta .label{ color:#b9d1ea; }
           </div>
         </div>
 
-        <!-- Experience Title -->
         <div class="row">
           <h1 class="big-4">Experience</h1>
           <div class="underline"></div>
         </div>
         <br>
 
-        <!-- EXPERIENCE CAROUSEL -->
         <div class="experience-wrap">
           <div class="owl-carousel experience-carousel">
 
-            <!-- ITEM 1 -->
             <div class="xp-card">
               <span class="date">Feb 2025 – Present</span>
               <h3 class="role">Senior Data Engineer</h3>
               <p class="company">UnitedHealth Group, Irvine, California</p>
               <ul>
-                <li>–	Built an AI-driven churn prediction platform on GCP (BigQuery, Databricks, Vertex AI) integrating 10M+ monthly member interactions, improving retention accuracy by 18%.</li>
+                <li>Built an AI-driven churn prediction platform on GCP (BigQuery, Databricks, Vertex AI) integrating 10M+ monthly member interactions, improving retention accuracy by 18%.</li>
                 <li>Scaled ETL; improved ingestion/transform by ~40%.</li>
                 <li>Resolved UBM duplicate bills 12% → 3% (−70 hrs/mo).</li>
                 <li>Built invoice ML; −25% billing discrepancies.</li>
@@ -606,60 +397,50 @@ body.light #about-section .profile-meta .label{ color:#b9d1ea; }
               </ul>
             </div>
 
-            <!-- ITEM 2 -->
             <div class="xp-card">
               <span class="date">Aug 2024 – Jan 2025</span>
               <h3 class="role">Data Engineer</h3>
               <p class="company">Walmart Global Tech, Bentonville, Arkansas</p>
               <ul>
-                <li>Optimized 10–15 REST APIs (200ms → 120ms) and added tests.</li>
-                <li>Entity Framework across 3 projects (+30% performance).</li>
-                <li>Customer analytics preprocessing; Agile delivery (+25%).</li>
-                <li>Enhanced UI for responsiveness and UX.</li>
+                <li>Developed and optimized ADF + Databricks pipelines processing 10M+ daily sales records; latency cut from 12h to &lt;1h.</li>
+                <li>What-if simulation frameworks reduced scenario analysis time by 70% for finance stakeholders.</li>
+                <li>Optimized Spark + Delta Lake, reducing compute cost by $250K/yr; enabled real-time Power BI insights.</li>
               </ul>
             </div>
             
-            <!-- ITEM 3 -->
             <div class="xp-card">
-              <span class="date">Mar 2024 - Jul 2024</span>
+              <span class="date">Mar 2024 – Jul 2024</span>
               <h3 class="role">Data Engineer</h3>
               <p class="company">Target, Dallas, Texas</p>
               <ul>
-                <li>Optimized 10–15 REST APIs (200ms → 120ms) and added tests.</li>
-                <li>Entity Framework across 3 projects (+30% performance).</li>
-                <li>Customer analytics preprocessing; Agile delivery (+25%).</li>
-                <li>Enhanced UI for responsiveness and UX.</li>
+                <li>Built GCP data platform with Dataflow, Pub/Sub, BigQuery enabling real-time recommendations across 2,000+ stores.</li>
+                <li>Airflow + GitLab CI cut SLA violations by 70% and reduced reporting latency from 24h to &lt;1h.</li>
               </ul>
             </div>
 
-            <!-- ITEM 4 -->
             <div class="xp-card">
-              <span class="date">Feb 2020 - Jul 2022</span>
+              <span class="date">Feb 2020 – Jul 2022</span>
               <h3 class="role">Senior Data Scientist</h3>
               <p class="company">Walmart Global Tech</p>
               <ul>
-                <li>Shipped 30+ automations; hundreds of hours saved monthly.</li>
-                <li>Built 25–30 APIs; tuned SQL; improved reporting reliability.</li>
-                <li>Reduced data errors via Excel/SharePoint cleanups (−90%).</li>
+                <li>Real-time eCommerce risk analytics on GCP; fraud/credit risk detection across millions of daily transactions.</li>
+                <li>Redesigned petabyte-scale pipelines (Dataflow, BigQuery, Composer): data latency 6h → 30m; model retraining 3× faster.</li>
               </ul>
             </div>
 
-            <!-- ITEM 5 -->
             <div class="xp-card">
-              <span class="date">Jun 2018 - Jan 2020</span>
+              <span class="date">Jun 2018 – Jan 2020</span>
               <h3 class="role">Software Engineer</h3>
               <p class="company">Adobe, Noida, India</p>
               <ul>
-                <li>REST APIs with Java/SQL; latency 200ms → 120ms.</li>
-                <li>Scrum/Kanban delivery; ~25% faster releases.</li>
-                <li>UI component iterations; −20% bounce rate.</li>
+                <li>Migrated analytics workloads to AWS (S3, Redshift, Glue), cutting reporting latency by 40% and improving scalability.</li>
+                <li>Built ETL and star-schema data models; ensured GDPR/CCPA compliance across 20+ teams.</li>
               </ul>
             </div>
 
           </div>
         </div>
 
-        <!-- Education -->
         <br><br>
         <div class="row">
           <h1 class="big-4">Education</h1>
@@ -686,7 +467,7 @@ body.light #about-section .profile-meta .label{ color:#b9d1ea; }
       </div>
     </section>
 
-    <!-- PROJECTS (REPLACED SECTION) -->
+    <!-- PROJECTS -->
     <section class="ftco-section" id="project-section">
       <div class="container">
         <div class="row">
@@ -694,7 +475,6 @@ body.light #about-section .profile-meta .label{ color:#b9d1ea; }
         </div>
         <br>
 
-        <!-- Controls -->
         <div class="kps-projects__controls">
           <input id="kps-search" type="search" placeholder="Search repos…" aria-label="Search repositories">
           <select id="kps-sort" aria-label="Sort repositories">
@@ -705,7 +485,6 @@ body.light #about-section .profile-meta .label{ color:#b9d1ea; }
           <button id="kps-load" class="btn btn-white btn-outline-white">Load more</button>
         </div>
 
-        <!-- Grid + placeholders -->
         <div id="kps-grid" class="kps-projects__grid" aria-live="polite" aria-busy="true"></div>
         <div id="kps-skeletons" class="kps-projects__grid" style="margin-top:10px"></div>
         <p id="kps-error" style="display:none; color:#ffbd39">Couldn’t load GitHub repositories. Please refresh later.</p>
@@ -865,17 +644,13 @@ body.light #about-section .profile-meta .label{ color:#b9d1ea; }
           nav: true,
           dots: true,
           smartSpeed: 600,
-          responsive: {
-            0:   { items: 1 },
-            992: { items: 2 }
-          },
+          responsive: { 0: { items: 1 }, 992: { items: 2 } },
           navText: [
             '<span class="oi oi-chevron-left" aria-label="Previous"></span>',
             '<span class="oi oi-chevron-right" aria-label="Next"></span>'
           ]
         });
 
-        // Keyboard navigation for accessibility
         $(document).on('keydown', function (e) {
           const $c = $('.experience-carousel');
           if (e.key === 'ArrowLeft')  $c.trigger('prev.owl.carousel');
@@ -886,7 +661,7 @@ body.light #about-section .profile-meta .label{ color:#b9d1ea; }
       // THEME TOGGLE (remember preference)
       (function(){
         const btn = document.getElementById('themeToggle');
-        const saved = localStorage.getItem('theme');   // "light" | "dark" | null
+        const saved = localStorage.getItem('theme');
         if (saved === 'light') document.body.classList.add('light');
 
         const syncIcon = () => {
@@ -904,14 +679,8 @@ body.light #about-section .profile-meta .label{ color:#b9d1ea; }
 
     <!-- Projects Grid (GitHub) -->
     <script>
-      // === Config ===
-      const KPS_CFG = {
-        githubUser: 'karanpratapsingh2507',
-        perPage: 12,
-        maxRepos: 60
-      };
+      const KPS_CFG = { githubUser: 'karanpratapsingh2507', perPage: 12, maxRepos: 60 };
 
-      // DOM
       const $grid = document.getElementById('kps-grid');
       const $skels = document.getElementById('kps-skeletons');
       const $err = document.getElementById('kps-error');
@@ -931,10 +700,7 @@ body.light #about-section .profile-meta .label{ color:#b9d1ea; }
         }
         $grid.setAttribute('aria-busy','true');
       }
-      function hideSkeletons(){
-        $skels.innerHTML = '';
-        $grid.setAttribute('aria-busy','false');
-      }
+      function hideSkeletons(){ $skels.innerHTML = ''; $grid.setAttribute('aria-busy','false'); }
       function timeAgo(dateStr){
         const d = new Date(dateStr); const s = Math.floor((Date.now()-d.getTime())/1000);
         const t = [['y',31536000],['mo',2592000],['d',86400],['h',3600],['m',60]];
@@ -980,7 +746,6 @@ body.light #about-section .profile-meta .label{ color:#b9d1ea; }
         const how=$sort.value;
         if(how==='name') return [...list].sort((a,b)=>a.name.localeCompare(b.name));
         if(how==='updated') return [...list].sort((a,b)=> new Date(b.updated_at)-new Date(a.updated_at));
-        // featured first: repos with topic 'portfolio'
         const scored=list.map(r=>({r,score:r.topics?.includes('portfolio')?1:0}));
         return scored.sort((a,b)=>(b.score-a.score)||(new Date(b.r.updated_at)-new Date(a.r.updated_at))).map(x=>x.r);
       }
