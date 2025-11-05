@@ -167,24 +167,57 @@
       /*======================================
       //--//-->   LIGHT MODE OVERRIDES
       ======================================*/
-      body.light { background: #f7f8fb; color: #111; }
-      body.light .navbar.ftco_navbar{ background: #ffffff !important; }
-      body.light .navbar-dark .navbar-brand,
-      body.light .navbar-dark .nav-link{ color:#111 !important; }
-      body.light .big-4, body.light h1.big, body.light h2 { color:#111; }
-      body.light .xp-card{
-        background: #ffffff;
-        color: #1f2937;
-        border: 1px solid #e5e7eb;
-      }
-      body.light .xp-card .company{ color:#6b7280; }
-      body.light .experience-wrap .owl-nav button.owl-prev,
-      body.light .experience-wrap .owl-nav button.owl-next{
-        background: rgba(0,0,0,.05) !important; border-color: rgba(0,0,0,.12);
-      }
-      body.light .experience-wrap .owl-nav .oi{ color:#111; }
-      body.light .experience-wrap .owl-nav button:hover .oi{ color:#0f131a; }
-      body.light .heading-section p{ color:#3d4451; }
+/*======================================
+ //--//-->   BLUE MODE (instead of LIGHT MODE)
+ ======================================*/
+body.light {
+  background: #0d1b2a;              /* Deep navy blue background */
+  color: #e7f0ff;                   /* Light bluish text */
+}
+
+body.light .navbar.ftco_navbar{
+  background: #0d1b2a !important;   /* Blue navbar */
+}
+
+body.light .navbar-dark .navbar-brand,
+body.light .navbar-dark .nav-link{
+  color:#eaf2ff !important;         /* Light blue nav text */
+}
+
+body.light .big-4,
+body.light h1.big,
+body.light h2 {
+  color:#ffffff;
+}
+
+body.light .xp-card{
+  background: #12263d;              /* Slightly lighter card */
+  color: #e7f0ff;
+  border: 1px solid rgba(234,242,255,0.12);
+}
+
+body.light .xp-card .company{
+  color:#9fb6cf;
+}
+
+body.light .experience-wrap .owl-nav button.owl-prev,
+body.light .experience-wrap .owl-nav button.owl-next{
+  background: rgba(234,242,255,0.08) !important;
+  border-color: rgba(234,242,255,0.18);
+}
+
+body.light .experience-wrap .owl-nav .oi{
+  color:#eaf2ff;
+}
+
+body.light .experience-wrap .owl-nav button:hover .oi{
+  color:#0d1b2a;
+}
+
+body.light .heading-section p{
+  color:#cfe0f5;
+}
+
 
       /* On very narrow screens keep arrows inside so they don't clip */
       @media (max-width: 576px){
