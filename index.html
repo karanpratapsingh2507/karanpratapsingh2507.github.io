@@ -21,6 +21,15 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
+        /* Prevent long repo names from overflowing cards */
+.kps-card h3,
+.kps-card h3 a{
+  line-height: 1.25;
+  max-width: 100%;
+  word-break: break-word;      /* legacy */
+  overflow-wrap: anywhere;     /* modern */
+  hyphens: auto;
+}
       /*======================================
       //--//-->   BASE TWEAKS
       ======================================*/
